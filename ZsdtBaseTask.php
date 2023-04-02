@@ -1,4 +1,5 @@
 <?php
+
 /**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -17,8 +18,9 @@
  * <http://phing.info>.
  */
 
-namespace Phing\Task\Ext;
+namespace Phing\Task\Ext\ZendServerDeploymentTool;
 
+use Phing\Exception\BuildException;
 use Phing\Task;
 
 /**
@@ -106,7 +108,7 @@ abstract class ZsdtBaseTask extends Task
         $msg = exec($commandString . ' 2>&1', $output, $code);
 
         if ($code !== 0) {
-            throw new \BuildException("Build package failed. \n Msg: " . $msg . " \n Pack command: " . $commandString);
+            throw new BuildException("Build package failed. \n Msg: " . $msg . " \n Pack command: " . $commandString);
         }
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -17,7 +18,9 @@
  * <http://phing.info>.
  */
 
-namespace Phing\Task\Ext;
+namespace Phing\Task\Ext\ZendServerDeploymentTool;
+
+use Phing\Exception\BuildException;
 
 /**
  * Class ZendServerDeploymentToolTask
@@ -40,7 +43,7 @@ class ZsdtValidateTask extends ZsdtBaseTask
     /**
      * {@inheritdoc}
      *
-     * @throws \BuildException
+     * @throws BuildException
      *
      * @return void
      */
@@ -49,7 +52,7 @@ class ZsdtValidateTask extends ZsdtBaseTask
         parent::validate();
 
         if ($this->descriptor === null) {
-            throw new \BuildException('The package descriptor file have to be set.');
+            throw new BuildException('The package descriptor file have to be set.');
         }
 
         $this->arguments .= $this->descriptor;
